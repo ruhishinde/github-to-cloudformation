@@ -3,24 +3,13 @@
     "Resources": {
         "S3Bucket": {
             "Type": "AWS::S3::Bucket"
-        },
-        "LambdaFunction": {
-            "Type": "AWS::Lambda::Function",
-            "Properties": {
-                "FunctionName": "github-to-lambda",
-                "Runtime": "python3.10",
-                "Handler": "lambda_function.lambda_handler",
-                "Role": "arn:aws:lambda:ap-southeast-1:655486962806:function:github-to-lambda",
-                "Code": {
-                    "S3Bucket": { "Ref": "S3Bucket" },
-                    "S3Key": "lambda_function.zip"
-                }
-            }
         }
     },
     "Outputs": {
         "BucketName": {
-            "Value": { "Ref": "S3Bucket" },
+            "Value": {
+                "Ref": "S3Bucket"
+            },
             "Description": "Name of the sample Amazon S3 bucket."
         }
     }
