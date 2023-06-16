@@ -15,7 +15,7 @@
             },
             "Description": "Name of the sample Amazon S3 bucket."
         }
-    }
+    },
 {
  LambdaFunction:
     Type: "AWS::Lambda::Function"
