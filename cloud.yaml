@@ -1,16 +1,20 @@
-{
-    "AWSTemplateFormatVersion": "2010-09-09",
-    "Resources": {
-        "S3Bucket": {
-            "Type": "AWS::S3::Bucket"
-        }
-    },
-    "Outputs": {
-        "BucketName": {
-            "Value": {
-                "Ref": "S3Bucket"
-            },
-            "Description": "Name of the sample Amazon S3 bucket."
-        }
-    }
-}
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - echo "Installing dependencies..."
+      - pip install -r requirements.txt
+  build:
+    commands:
+      - echo "Zipping deployment package..."
+      - cd .\github-to-lambda-demo\
+      - zip -r java_function.zip Simple.java
+  post_build:
+    commands:
+      - echo "Updating lambda Function.."
+      - aws lambda update-function-code --function-name github-to-lambda --zip-file fileb://java_function.zip
+      - aws s3 cp java_function.zip s3://myuniquebucket-2023/java_function.zip
+      - echo "Lambda function zip file uploaded to S3"
+      - echo "DONE!"
