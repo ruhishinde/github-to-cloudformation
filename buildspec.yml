@@ -16,4 +16,4 @@ phases:
       - echo "Updating lambda Function.."
       - aws lambda update-function-code --function-name github-to-lambda --zip-file fileb://java_function.zip
       - echo "Lambda function zip file upload to S3"
-      - echo "DONE!"
+      - echo "DONE!!"
