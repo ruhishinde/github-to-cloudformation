@@ -6,7 +6,7 @@ Resources:
         S3Bucket: various-bucket-1
         S3Key: hello world.zip
       Handler: example.Hello::handleRequest
-      Runtime: java11
+      Runtime: corretto11
       Role: arn:aws:iam::655486962806:role/New-cf-lambda
   build:
     commands:
@@ -17,4 +17,4 @@ Resources:
     commands:
       - echo "Updating lambda Function..."
       - aws lambda update-function-code --function-name lambdafunctionjar --zip-file fileb://deployment_package.zip
-      - echo "DONE!!"
+      - echo "DONE!"
