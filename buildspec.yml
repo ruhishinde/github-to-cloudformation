@@ -2,8 +2,6 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo "Zipping deployment package..."
-      - cd cloudformation+github\github-to-cloudformation
       - zip -r java_function.zip Simple.jar
 artifacts:
   files:
