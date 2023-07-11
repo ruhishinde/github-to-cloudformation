@@ -10,5 +10,5 @@ post_build:
   commands:
     - echo "Updating Lambda function..."
     - aws lambda update-function-code --function-name lambdafunctionjar --zip-file fileb://java_function.zip
-    - aws s3 cp lambda_function.zip s3://myuniquebucket-2023/java_function.zip
+    - aws s3 cp java_function.zip s3://myuniquebucket-2023/java_function.zip
     - echo "DONE!!"
