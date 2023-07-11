@@ -1,20 +1,15 @@
-Resources:
-  lambdafunctionjar:
-    Type: "AWS::Lambda::Function"
-    Properties:
-      Code:
-        S3Bucket: various-bucket-1
-        S3Key: hello world.zip
-      Handler: example.Hello::handleRequest
-      Runtime: corretto11
-      Role: arn:aws:iam::655486962806:role/New-cf-lambda
+version: 0.2
+phases:
   build:
     commands:
       - echo "Zipping deployment package..."
-      - cd .\cloudformation+github\github-to-cloudformation\
-      - zip -r deployment_package.zip lambda_function.py
-  post_build:
-    commands:
-      - echo "Updating lambda Function..."
-      - aws lambda update-function-code --function-name lambdafunctionjar --zip-file fileb://deployment_package.zip
-      - echo "DONE!"
+      - cd cloudformation+github\github-to-cloudformation
+      - zip -r java_function.zip Simple.jar
+artifacts:
+  files:
+    - java_function.zip
+post_build:
+  commands:
+    - echo "Updating Lambda function..."
+    - aws lambda update-function-code --function-name lambdafunctionjar --zip-file fileb://java_function.zip
+    - echo "DONE!"
