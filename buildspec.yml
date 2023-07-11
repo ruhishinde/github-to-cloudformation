@@ -12,4 +12,4 @@ post_build:
   commands:
     - echo "Updating Lambda function..."
     - aws lambda update-function-code --function-name lambdafunctionjar --zip-file fileb://java_function.zip
-    - echo "DONE!"
+    - echo "DONE!!"
