@@ -3,9 +3,6 @@ phases:
   build:
     commands:
       - zip -r java_function.zip Simple.jar
-artifacts:
-  files:
-    - java_function.zip
 post_build:
   commands:
     - echo "Updating Lambda function..."
