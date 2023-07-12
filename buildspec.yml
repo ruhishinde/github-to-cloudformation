@@ -3,7 +3,7 @@ phases:
   build:
     commands:
       - zip -r java_function.zip Simple.jar
-  artifacts:
+artifacts:
   files:
     - java_function.zip
 post_build:
