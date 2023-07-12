@@ -8,4 +8,4 @@ post_build:
     - echo "Updating Lambda function..."
     - aws lambda update-function-code --function-name lambdafunctionjar --zip-file fileb://java_function.zip
     - aws s3 cp java_function.zip s3://various-bucket-1/java_function.zip
-    - echo "DONE!"
+    - echo "DONE!!"
